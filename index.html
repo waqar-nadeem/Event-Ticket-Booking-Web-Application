@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classical Music Concert 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background: #f8fafc url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .header {
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            padding: 38px 0 24px 0;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            box-shadow: none;
+        }
+        .header h1 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+        }
+        .header p {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 500;
+        }
+        .main-content {
+            text-align: center;
+            text-align: center;
+            text-align: center;
+                max-width: 320px;
+            margin: 14px auto 0 auto;
+            background: rgba(175, 173, 173, 0.97);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            padding: 12px 32px 32px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-content h2 {
+            margin-bottom: 18px;
+            color: #4e54c8;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: left;
+        }
+        .form-group {
+            text-align: left;
+            text-align: center;
+            margin-bottom: 18px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+            font-weight: 600;
+            text-align: left;
+        }
+        input[type="text"], input[type="tel"], input[type="email"] {
+                width: 100%;
+            padding: 8px 10px;
+            border: 1.2px solid #bdbdbd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: #f7f7fa;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus, input[type="tel"]:focus, input[type="email"]:focus {
+            border: 1.5px solid #4e54c8;
+            outline: none;
+        }
+        .btn {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding: 12px 0;
+            background: linear-gradient(90deg, #4e54c8 0%, #8f94fb 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #8f94fb 0%, #4e54c8 100%);
+        }
+        .success-message {
+            margin-top: 22px;
+            color: #43a047;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: none;
+        }
+        .error-message {
+            margin-top: 10px;
+            color: #e53935;
+            font-size: 1rem;
+            font-weight: 500;
+            display: none;
+        }
+        .footer {
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+            font-size: 0.95rem;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            margin: 0;
+            padding: 10px 0;
+            background: transparent;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Classical Music Concert 2025</h1>
+        <p>Experience an unforgettable night of classical music. Book your tickets now!</p>
+    </div>
+    <div class="main-content">
+        <h2>Book Your Ticket</h2>
+        <form id="bookingForm" autocomplete="off">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="tel" id="contact" name="contact" required pattern="[0-9]{10,15}" placeholder="e.g. 03001234567">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+            </div>
+            <button type="submit" class="btn">Book Ticket</button>
+            <div class="error-message" id="errorMsg"></div>
+            <div class="success-message" id="successMsg">Your ticket has been booked successfully!<br><span id="emailMsg"></span></div>
+        </form>
+    </div>
+    <footer class="footer">
+        &copy; 2025 Waqar Nadeem. All rights reserved.<br>
+        This web application and its code are licensed and protected. Unauthorized use, reproduction or distribution is prohibited.
+    </footer>
+    <script>
+        const form = document.getElementById('bookingForm');
+        const errorMsg = document.getElementById('errorMsg');
+        const successMsg = document.getElementById('successMsg');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
+            document.getElementById('emailMsg').textContent = '';
+            const name = form.name.value.trim();
+            const contact = form.contact.value.trim();
+            const email = form.email.value.trim();
+            if (!name) {
+                errorMsg.textContent = 'Please enter your name.';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            if (!/^\d{10,15}$/.test(contact)) {
+                errorMsg.textContent = 'Please enter a valid contact number (10-15 digits).';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            if (!/^\S+@\S+\.\S+$/.test(email)) {
+                errorMsg.textContent = 'Please enter a valid email address.';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            // Simulate booking success
+            successMsg.style.display = 'block';
+            document.getElementById('emailMsg').textContent = `Ticket confirmation sent to ${email}`;
+            form.reset();
+        });
+    </script>
+</body>
+</html>
